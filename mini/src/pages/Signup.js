@@ -31,7 +31,7 @@ function Signup() {
       passwordCheck.current.value = "";
       return;
     }
-    if (password.current.value.length < 5) {
+    if (password.current.value.length < 4) {
       alert("비밀번호가 너무 짧아요!");
       password.current.value = "";
       passwordCheck.current.value = "";
@@ -74,7 +74,7 @@ function Signup() {
   function nickCheck() {
     axios({
       method: "get",
-      url: `http://1.224.63.113:8080/user/idCheck/${nickname.current.value}`,
+      url: `http://1.224.63.113:8080/user/nicknameCheck/${nickname.current.value}`,
     })
       .then((res) => {
         console.log(res);
