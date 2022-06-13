@@ -22,7 +22,6 @@ function Signup() {
       alert("모든 항목을 입력해주세요!");
       return;
     }
-    alert("회원가입이 완료되었습니다!");
   }
   function pwdCheck() {
     if (password.current.value !== passwordCheck.current.value) {
@@ -52,6 +51,10 @@ function Signup() {
     })
       .then((res) => {
         console.log(res);
+        if (res.data === "login") {
+          alert("회원 가입이 완료되었습니다!");
+          navigate("/login");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -65,6 +68,11 @@ function Signup() {
     })
       .then((res) => {
         console.log(res);
+        if (res.data) {
+          alert("아이디 확인이 완료되었습니다.");
+        } else {
+          alert("같은 아이디가 이미 사용중입니다!");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -78,6 +86,11 @@ function Signup() {
     })
       .then((res) => {
         console.log(res);
+        if (res.data) {
+          alert("닉네임 확인이 완료되었어요.");
+        } else {
+          alert("같은 닉네임이 이미 사용중입니다!");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -148,6 +161,7 @@ const Input = styled.input`
   padding: 13px;
   border: 1px solid #eee;
   border-radius: 4px;
+  font-size: 12px;
 `;
 const Msg = styled.div`
   margin-bottom: 50px;
