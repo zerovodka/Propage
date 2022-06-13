@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+//라우팅
+import { Routes, Route } from "react-router-dom";
+//페이지
+import Detail from "./Pages/Detail";
+import Post from "./Pages/Post";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        <Route path="/detail" element={<Detail />} />
+        <Route path="/post" element={<Post />} />
+      </Routes>
     </div>
   );
 }
