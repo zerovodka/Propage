@@ -1,7 +1,7 @@
 import "../App.css";
 import React from "react";
 import styled from "styled-components";
-import Header from "../components/Header";
+import CenterHeader from "../components/CenterHeader";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -12,7 +12,7 @@ function Login() {
   function LoginPost() {
     axios({
       method: "post",
-      url: "http://localhost:8080/user/login",
+      url: "http://1.224.63.113:8080/user/login",
       data: {
         username: username.current.value,
         password: password.current.value,
@@ -20,6 +20,10 @@ function Login() {
     })
       .then((res) => {
         console.log(res);
+        console.log(res.headers.authorization);
+        if (res.headers.authorization) {
+          localStorage.setItem("token", res.headers.authorization);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -28,7 +32,7 @@ function Login() {
 
   return (
     <>
-      <Header />
+      <CenterHeader />
       <Container>
         <Msg>
           <p>

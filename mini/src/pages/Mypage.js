@@ -1,12 +1,12 @@
 import "../App.css";
 import React from "react";
 import styled from "styled-components";
-import Header from "../components/Header";
+import CenterHeader from "../components/CenterHeader";
 
 function Mypage() {
   return (
     <>
-      <Header />
+      <CenterHeader />
       <Container>
         <p>닉네임 님의 마이페이지</p>
         <Btn>회원 정보 수정</Btn>

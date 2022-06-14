@@ -5,43 +5,34 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 
 function Header() {
-  return (
-    <div className="App">
-      <Head>
-        <LogoCenter>Propage$</LogoCenter>
-      </Head>
-    </div>
-  );
-}
+  const token = localStorage.getItem("token");
 
-function HeaderLogin() {
   return (
-    <div className="App">
-      <Head>
-        <Logo>Propage$</Logo>
-        <BtnWrap>
-          <Btn>로그인</Btn>
-        </BtnWrap>
-      </Head>
-    </div>
-  );
-}
-
-function HeaderLogout() {
-  return (
-    <div className="App">
-      <Head>
-        <Logo>Propage$</Logo>
-        <BtnWrap>
-          <Btn>닉네임 님의 마이페이지</Btn>
-          <BtnPost>
-            <FontAwesomeIcon icon={faPen} className="fa-lg" />
-            게시글 작성
-          </BtnPost>
-          <Btn>로그아웃</Btn>
-        </BtnWrap>
-      </Head>
-    </div>
+    <>
+      {!token ? (
+        <div className="App">
+          <Head>
+            <Logo>Propage$</Logo>
+            <BtnWrap>
+              <Btn>로그인</Btn>
+            </BtnWrap>
+          </Head>
+        </div>
+      ) : (
+        <div className="App">
+          <Head>
+            <Logo>Propage$</Logo>
+            <BtnWrap>
+              <BtnPost>
+                <FontAwesomeIcon icon={faPen} className="fa-lg" />
+                게시글 작성
+              </BtnPost>
+              <Btn>로그아웃</Btn>
+            </BtnWrap>
+          </Head>
+        </div>
+      )}
+    </>
   );
 }
 
@@ -103,4 +94,3 @@ const BtnPost = styled.div`
   }
 `;
 export default Header;
-export { HeaderLogin, HeaderLogout };

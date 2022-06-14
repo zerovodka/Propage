@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+
 //주석
 function Detail() {
   return (
@@ -73,13 +74,14 @@ function Detail() {
   );
 }
 const PostWrap = styled.div`
-    display: flex;,
-    justify-content: space-between;
-    margin: 20px 40px;
-    @media screen and (max-width: 850px){
-        flex-direction: column;
-        align-items: center;
-    }`;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px;
+  @media screen and (max-width: 850px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
 
 const PostContents = styled.div`
   max-width: 50%;

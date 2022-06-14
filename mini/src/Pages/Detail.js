@@ -1,9 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import Header from "../components/Header";
 //주석
 function Detail() {
   return (
     <div>
+      <Header />
       <DetailWrap>
         <div
           className="detail_thumbnail"
@@ -46,13 +48,14 @@ function Detail() {
   );
 }
 const DetailWrap = styled.div`
-    display: flex;,
-    justify-content: space-between;
-    margin: 20px 40px;
-    @media screen and (max-width: 850px){
-        flex-direction: column;
-        align-items: center;
-    }`;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px;
+  @media screen and (max-width: 850px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
 
 const DetailContents = styled.div`
   max-width: 50%;
