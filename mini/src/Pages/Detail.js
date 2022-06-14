@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-//주석
+import Header from "../components/Header";
 function Detail() {
   return (
     <div>
+      <Header />
       <DetailWrap>
         <div
           className="detail_thumbnail"

@@ -12,7 +12,7 @@ function Login() {
   function LoginPost() {
     axios({
       method: "post",
-      url: "http://localhost:8080/user/login",
+      url: "http://1.224.63.113:8080/user/login",
       data: {
         username: username.current.value,
         password: password.current.value,
