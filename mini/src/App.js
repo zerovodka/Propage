@@ -1,19 +1,16 @@
-
 import "./App.css";
 import { Reset } from "styled-reset";
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-import Mypage from "./pages/Mypage";
+import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
+import Mypage from "./Pages/Mypage";
 import Detail from "./Pages/Detail";
 import Post from "./Pages/Post";
-
 
 function App() {
   return (
     <div className="App">
-
       <Reset />
       <BrowserRouter>
         <Routes>
@@ -24,10 +21,6 @@ function App() {
           <Route path="/post" element={<Post />} />
         </Routes>
       </BrowserRouter>
-
-
-        
-
     </div>
   );
 }
