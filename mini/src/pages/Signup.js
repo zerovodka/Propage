@@ -1,5 +1,5 @@
 import "../App.css";
-import Header from "../components/Header";
+import CenterHeader from "../components/CenterHeader";
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
@@ -99,7 +99,7 @@ function Signup() {
 
   return (
     <>
-      <Header />
+      <CenterHeader />
       <Container>
         <Msg>
           <p>안녕하세요😊</p>

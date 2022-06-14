@@ -1,7 +1,7 @@
 import "../App.css";
 import React from "react";
 import styled from "styled-components";
-import Header from "../components/Header";
+import CenterHeader from "../components/CenterHeader";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -32,7 +32,7 @@ function Login() {
 
   return (
     <>
-      <Header />
+      <CenterHeader />
       <Container>
         <Msg>
           <p>
