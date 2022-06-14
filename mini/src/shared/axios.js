@@ -4,7 +4,7 @@ axios.defaults.withCredentials = true;
 export const instance = axios.create({
   url: "http://1.224.63.113:8080/",
 });
-
+//axios apis
 export const apis = {
   signup: (username, nickname, password, passwordCheck) =>
     instance.post("/user/signup", {
