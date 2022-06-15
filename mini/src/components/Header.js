@@ -1,33 +1,74 @@
 import "../App.css";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
-
+const navigate = useNavigate();
 function Header() {
   const token = localStorage.getItem("token");
-
+  function logout() {
+    axios({
+      method: "post",
+      url: "http://1.224.63.113:8080/user/logout",
+      data: {
+        token: token,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        localStorage.removeItem("token");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <>
       {!token ? (
         <div className="App">
           <Head>
-            <Logo>Propage$</Logo>
+            <Logo
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Propage$
+            </Logo>
             <BtnWrap>
-              <Btn>로그인</Btn>
+              <Btn
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                로그인
+              </Btn>
             </BtnWrap>
           </Head>
         </div>
       ) : (
         <div className="App">
           <Head>
-            <Logo>Propage$</Logo>
+            <Logo
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Propage$
+            </Logo>
             <BtnWrap>
               <BtnPost>
-                <FontAwesomeIcon icon={faPen} className="fa-lg" />
+                <FontAwesomeIcon
+                  icon={faPen}
+                  className="fa-lg"
+                  onClick={() => {
+                    navigate("/post");
+                  }}
+                />
                 게시글 작성
               </BtnPost>
-              <Btn>로그아웃</Btn>
+              <Btn onClick={logout}>로그아웃</Btn>
             </BtnWrap>
           </Head>
         </div>
@@ -45,12 +86,7 @@ const Head = styled.div`
   border-bottom: 1px solid #eee;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 6px 0px;
 `;
-const LogoCenter = styled.div`
-  margin: 0 auto;
-  font-size: 24px;
-  font-family: "Roboto Mono", monospace;
-  font-weight: 600;
-`;
+
 const Logo = styled.div`
   margin-left: 30px;
   font-size: 24px;

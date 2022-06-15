@@ -51,9 +51,11 @@ function Signup() {
     })
       .then((res) => {
         console.log(res);
-        if (res.data === "login") {
+        if (res.data.result === true) {
           alert("회원 가입이 완료되었습니다!");
           navigate("/login");
+        } else {
+          alert(res.data.errorMessage);
         }
       })
       .catch((err) => {
@@ -87,7 +89,7 @@ function Signup() {
       .then((res) => {
         console.log(res);
         if (res.data) {
-          alert("닉네임 확인이 완료되었어요.");
+          alert("닉네임 확인이 완료되었습니다.");
         } else {
           alert("같은 닉네임이 이미 사용중입니다!");
         }
@@ -186,7 +188,6 @@ const CheckBtn = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  //width: 50px;
   width: 80px;
   font-size: 12px;
   background: #eee;

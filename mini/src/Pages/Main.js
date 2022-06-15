@@ -1,15 +1,20 @@
 
 import React from "react"
-import CardList from "./CardList";
+import Header from "../components/Header";
+import CardList from "./CardBox";
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+// import {cardAxios} from "../redux/modules/card";
 
 
-const Main = (props) => {
+
+
+const Main = () => {
+
     return(
         <div>
-            
-                <CardList/>          
-                <CardList/>
-        
+            <Header />
+            <CardList/>          
         </div>
             
         
