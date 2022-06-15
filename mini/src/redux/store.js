@@ -9,15 +9,15 @@
 
 // export default store;
 
-
-
 //리덕스 툴킷
 
-import {configureStore} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import cardReducer from "./modules/cardSlice";
 
-const store = configureStore({reducer: {
+const store = configureStore({
+  reducer: {
     card: cardReducer,
-}});
+  },
+});
 
 export default store;
