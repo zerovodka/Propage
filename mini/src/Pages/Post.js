@@ -10,6 +10,7 @@ function Detail() {
   const navigate = useNavigate();
   const [selected, setSelected] = React.useState(1);
   const [isbn, setIsbn] = React.useState();
+  const [isbn2, setIsbn2] = React.useState();
   const [data, setData] = React.useState();
 
   const [title, setTitle] = React.useState();
@@ -64,6 +65,7 @@ function Detail() {
   // console.log(isbn);
   console.log(data);
   console.log(isbn);
+
   // isbn 값 보내서 책 특정하기
   function bookInfo(index) {
     axios({
@@ -86,9 +88,11 @@ function Detail() {
         );
         setImage(res.data.image);
         setPublisher(res.data.publisher);
+        setIsbn2(res.data.isbn);
       })
       .catch((err) => {
         console.log(err);
+        console.log(isbn);
       });
   }
   console.log(title);
@@ -96,6 +100,7 @@ function Detail() {
   console.log(description);
   console.log(image);
   console.log(publisher);
+  console.log(isbn2);
 
   // 게시글 작성
   function postPost() {
@@ -103,9 +108,12 @@ function Detail() {
       method: "post",
       url: "http://1.224.63.113:8080/api/post",
       data: {
-        // isbn: "",
-        // title: "",
-        star: selected,
+        title: title,
+        image: image,
+        author: author,
+        publisher: publisher,
+        description: description,
+        star: parseInt(selected),
         comment: comment.current.value,
       },
       headers: {
@@ -115,9 +123,11 @@ function Detail() {
     })
       .then((res) => {
         console.log(res);
+        setIsbn(isbn.id);
       })
       .catch((err) => {
         console.log(err);
+        // console.log(isbn);
       });
   }
 

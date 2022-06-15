@@ -2,12 +2,12 @@ import "../App.css";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-
 import axios from "axios";
 
 function Header() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
   function logout() {
     axios({
       method: "post",
