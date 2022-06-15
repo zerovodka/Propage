@@ -2,8 +2,9 @@ import "../App.css";
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-const navigate = useNavigate();
+
 function CenterHeader() {
+  const navigate = useNavigate();
   return (
     <div className="App">
       <Head>
@@ -33,6 +34,9 @@ const LogoCenter = styled.div`
   font-size: 24px;
   font-family: "Roboto Mono", monospace;
   font-weight: 600;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export default CenterHeader;
