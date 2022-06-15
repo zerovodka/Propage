@@ -197,7 +197,7 @@ const CheckBtn = styled.div`
     cursor: pointer;
     background: #ccc;
     transition: 0.5s ease;
-  }
+  // }
 `;
 const Btn = styled.div`
   width: 150px;
