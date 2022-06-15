@@ -1,12 +1,19 @@
 import "../App.css";
 import React from "react";
 import styled from "styled-components";
-
+import { useNavigate } from "react-router-dom";
+const navigate = useNavigate();
 function CenterHeader() {
   return (
     <div className="App">
       <Head>
-        <LogoCenter>Propage$</LogoCenter>
+        <LogoCenter
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Propage$
+        </LogoCenter>
       </Head>
     </div>
   );

@@ -1,33 +1,74 @@
 import "../App.css";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
-
+const navigate = useNavigate();
 function Header() {
   const token = localStorage.getItem("token");
-
+  function logout() {
+    axios({
+      method: "post",
+      url: "http://1.224.63.113:8080/user/logout",
+      data: {
+        token: token,
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        localStorage.removeItem("token");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <>
       {!token ? (
         <div className="App">
           <Head>
-            <Logo>Propage$</Logo>
+            <Logo
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Propage$
+            </Logo>
             <BtnWrap>
-              <Btn>로그인</Btn>
+              <Btn
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                로그인
+              </Btn>
             </BtnWrap>
           </Head>
         </div>
       ) : (
         <div className="App">
           <Head>
-            <Logo>Propage$</Logo>
+            <Logo
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Propage$
+            </Logo>
             <BtnWrap>
               <BtnPost>
-                <FontAwesomeIcon icon={faPen} className="fa-lg" />
+                <FontAwesomeIcon
+                  icon={faPen}
+                  className="fa-lg"
+                  onClick={() => {
+                    navigate("/post");
+                  }}
+                />
                 게시글 작성
               </BtnPost>
-              <Btn>로그아웃</Btn>
+              <Btn onClick={logout}>로그아웃</Btn>
             </BtnWrap>
           </Head>
         </div>
