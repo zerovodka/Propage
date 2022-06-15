@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-//백엔드 분들이랑 해보기
 const CardList = (props) => {
   const [post, setPost] = useState([]);
-
   useEffect(() => {
     axios({
       method: "get",
@@ -21,28 +19,21 @@ const CardList = (props) => {
         console.log(error);
       });
   }, []);
-
-  const card = useSelector((state) => state.card);
-
-  console.log(card[0].title);
-
-  const dispatch = useDispatch();
-
-  const cardAxios = () => {};
-
-  //img 이미지
-  //title 책 제목
-  //star 별
-
+  const navigate = useNavigate();
   return (
     <>
       <CardBox>
         {post.map((list, index) => {
           return (
-            <Card key={post.id}>
+            <Card
+              key={post.id}
+              onClick={() => {
+                navigate(`/detail/${index}`);
+              }}
+            >
               <Img src={post[index].image} />
               <Title>{post[index].title}</Title>
-              <Star>{post[index].star}</Star>
+              <Star>{":별:".repeat(post[index].star)}</Star>
             </Card>
           );
         })}
@@ -50,7 +41,6 @@ const CardList = (props) => {
     </>
   );
 };
-
 const CardBox = styled.div`
   margin: 0 auto;
   display: flex;
@@ -59,15 +49,13 @@ const CardBox = styled.div`
   min-width: 800px;
   max-width: 1600px;
 `;
-
 const Card = styled.div`
   max-width: 350px;
   /* height: 500px; */
-  background-color: #64e7b1;
+  /* background-color: #64E7B1; */
   margin: 20px 25px;
   border-radius: 10px;
 `;
-
 const Img = styled.img`
   width: 330px;
   height: 250px;
@@ -75,7 +63,6 @@ const Img = styled.img`
   background-color: white;
   border-radius: 10px;
 `;
-
 const Title = styled.div`
   width: 330px;
   /* height: 50px; */
@@ -83,7 +70,6 @@ const Title = styled.div`
   margin: 10px;
   border-radius: 10px;
 `;
-
 const Star = styled.div`
   width: 330px;
   /* height: 50px; */
@@ -91,5 +77,4 @@ const Star = styled.div`
   margin: 10px;
   border-radius: 10px;
 `;
-
 export default CardList;
