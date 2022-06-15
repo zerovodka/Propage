@@ -4,12 +4,11 @@ import styled from "styled-components";
 import CenterHeader from "../components/CenterHeader";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 function Login() {
   const username = React.useRef();
   const password = React.useRef();
-  const navigate = useNavigate();
+
   function LoginPost() {
     axios({
       method: "post",
@@ -20,19 +19,13 @@ function Login() {
       },
     })
       .then((res) => {
-        if (res.data.result === true) {
-          if (res.headers.authorization) {
-            localStorage.setItem("token", res.headers.authorization);
-          }
-          alert("안녕하세요!");
-          navigate("/");
-        } else {
-          alert("가입한 회원이 아닙니다.");
-        }
         console.log(res);
+        console.log(res.headers.authorization);
+        if (res.headers.authorization) {
+          localStorage.setItem("token", res.headers.authorization);
+        }
       })
       .catch((err) => {
-        alert("가입한 회원이 아닙니다.");
         console.log(err);
       });
   }
