@@ -1,6 +1,30 @@
+//리덕스 기본
+import axios from "axios";
+
+
+const cardAxios = () => {
+    axios({
+        method: "get",
+        url:"http://1.224.63.113:8080/api/posts"
+    
+    })
+    .then(response => {
+        console.log(response)
+    })
+    .catch(error => {
+        console.log(error);
+    });
+      
+}
+
 const CHANGE_TITLE = "title/CHANGE_TITLE";
 
-const initial_state = {title: "아무것도 없는 책", star:'⭐⭐⭐', comment: "진짜 아무것도 없는거여?"};
+const initial_state = {
+    title: "멘탈을 바꿔야 인생이 바뀐다", 
+    star:'⭐⭐⭐', 
+    comment: "정신 차려 제발",
+    img : "http://image.kyobobook.co.kr/images/book/large/761/l9791191043761.jpg" 
+};
 
 export const changeTitle = (title) => {
     return {type:CHANGE_TITLE, title};
@@ -16,3 +40,6 @@ export default function reducer(state = initial_state, action = {}){
         return state;
     }
 }
+
+
+export {cardAxios};
