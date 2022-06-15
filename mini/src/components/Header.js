@@ -2,8 +2,7 @@ import "../App.css";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
+
 import axios from "axios";
 
 function Header() {
@@ -60,14 +59,11 @@ function Header() {
               Propage$
             </Logo>
             <BtnWrap>
-              <BtnPost>
-                <FontAwesomeIcon
-                  icon={faPen}
-                  className="fa-lg"
-                  onClick={() => {
-                    navigate("/post");
-                  }}
-                />
+              <BtnPost
+                onClick={() => {
+                  navigate("/post");
+                }}
+              >
                 게시글 작성
               </BtnPost>
               <Btn onClick={logout}>로그아웃</Btn>
@@ -94,6 +90,9 @@ const Logo = styled.div`
   font-size: 24px;
   font-family: "Roboto Mono", monospace;
   font-weight: 600;
+  :hover {
+    cursor: pointer;
+  }
 `;
 const BtnWrap = styled.div`
   display: flex;
@@ -108,7 +107,7 @@ const Btn = styled.div`
   border-bottom: 3px solid transparent;
   cursor: pointer;
   :hover {
-    color: #64e7b1;
+    font-weight: bold;
     transition: 0.5s ease;
   }
 `;

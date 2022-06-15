@@ -34,6 +34,9 @@ const LogoCenter = styled.div`
   font-size: 24px;
   font-family: "Roboto Mono", monospace;
   font-weight: 600;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 export default CenterHeader;

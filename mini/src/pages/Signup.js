@@ -156,14 +156,14 @@ const Container = styled.div`
   flex-direction: column;
 `;
 const InputWrap = styled.div`
-  width: 320px;
+  width: 350px;
 `;
 const Input = styled.input`
-  width: 200px;
+  width: 250px;
   padding: 13px;
-  border: 1px solid #eee;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 12px;
+  font-size: 14px;
 `;
 const Msg = styled.div`
   margin-bottom: 50px;

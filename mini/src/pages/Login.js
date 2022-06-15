@@ -67,11 +67,12 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   input {
-    width: 200px;
+    width: 250px;
     padding: 13px;
     margin-top: 10px;
-    border: 1px solid #eee;
+    border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 14px;
   }
 `;
 const Msg = styled.div`

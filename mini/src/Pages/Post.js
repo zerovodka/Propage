@@ -137,10 +137,11 @@ function Detail() {
           ></img>
         </div>
         <PostContents>
-          <div>
-            <input type="text" placeholder="책 검색" ref={searchBar} />
+          <Msg>원하는 책을 검색해보세요 📖</Msg>
+          <InputWrap>
+            <PostInput type="text" placeholder="책 검색" ref={searchBar} />
             <Btn onClick={postGet}>검색</Btn>
-          </div>
+          </InputWrap>
 
           <div className="mini-card">
             <CardBox>
@@ -159,12 +160,14 @@ function Detail() {
                 })}
             </CardBox>
           </div>
+          <TextBox>
+            <Title>{title}</Title>
 
-          <h1>{title}</h1>
-          <h2>{publisher}</h2>
-          <h2>{author}</h2>
+            <Auth>{publisher}</Auth>
+            <Auth>{author}</Auth>
 
-          <span>{description}</span>
+            <Desc>{description}</Desc>
+          </TextBox>
 
           <div
             className="detail_comments"
@@ -174,43 +177,35 @@ function Detail() {
               textAlign: "center",
             }}
           >
-            <p>
-              <br />
-              <select
-                onChange={handleSelect}
-                value={selected}
-                style={{
-                  border: "none",
-                  width: "40%",
-                  fontSize: "30px",
-                }}
-              >
+            <StarWrap>
+              <StarMsg>별점을 선택하고</StarMsg>
+              <Star onChange={handleSelect} value={selected}>
                 {Options.map((item, index) => (
                   <option key={item.key} value={item.key}>
                     {item.value}
                   </option>
                 ))}
-              </select>
-            </p>
-            <h3>
-              <input
-                style={{
-                  width: "100%",
-                  height: "100px",
-                  fontSize: "16px",
-                  resize: "both",
-                  padding: "10px",
-                  boxSizing: "border-box",
-                  border: "2px solid #1E90FF",
-                  borderRadius: "10px",
-                }}
-                ref={comment}
-                type="text"
-                placeholder="한줄평을 남겨주세요."
-              />
-            </h3>
+              </Star>
+            </StarWrap>
+            <StarMsg>한줄평을 남겨주세요</StarMsg>
+            <textarea
+              style={{
+                width: "400px",
+                height: "80px",
+                fontSize: "16px",
+                padding: "30px",
+                margin: "0 auto",
+                border: "1px solid #ddd",
+                borderRadius: "4px",
+                marginTop: "5px",
+                resize: "none",
+              }}
+              ref={comment}
+              type="text"
+              placeholder="한줄평"
+            />
           </div>
-          <Btn onClick={postPost}>작성 완료</Btn>
+          <PostBtn onClick={postPost}>작성 완료</PostBtn>
         </PostContents>
       </PostWrap>
     </div>
@@ -227,14 +222,130 @@ const PostWrap = styled.div`
 `;
 
 const PostContents = styled.div`
-  max-width: 50%;
+  max-width: 55%;
   height: auto;
   @media screen and (max-width: 850px) {
     max-width: 90%;
   }
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+const InputWrap = styled.div`
+  display: flex;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+`;
+const Msg = styled.div`
+  font-size: 25px;
+  margin-top: 30px;
+`;
+const PostInput = styled.input`
+  width: 300px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+`;
+const Btn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  width: 80px;
+  font-size: 12px;
+  background: #eee;
+  margin-left: 5px;
+  padding: 15px;
+  :hover {
+    cursor: pointer;
+    background: #ccc;
+    transition: 0.5s ease;
+  }
 `;
 
-const Btn = styled.div`
+const CardBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+  width: 800px;
+`;
+const Card = styled.div`
+  width: 130px;
+  /* height: 500px; */
+  border: 1px solid #eee;
+  margin: 5px;
+  border-radius: 10px;
+
+  :hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    cursor: pointer;
+  }
+`;
+const TextBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
+const Title = styled.div`
+  width: 500px;
+  font-size: 25px;
+  font-weight: 600;
+  padding-top: 50px;
+  line-height: 140%;
+`;
+const Auth = styled.div`
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #555;
+  font-size: 16px;
+  padding-top: 20px;
+  div {
+    margin-left: 10px;
+  }
+`;
+const Desc = styled.div`
+  width: 500px;
+  font-size: 16px;
+  color: #555;
+  padding-top: 20px;
+  line-height: 140%;
+  text-align: justify;
+`;
+const Img = styled.img`
+  width: 100px;
+  margin: 10px;
+  background-color: white;
+  border-radius: 10px;
+`;
+const StarWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+const StarMsg = styled.div`
+  font-size: 18px;
+  padding: 10px;
+  margin-top: 20px;
+`;
+const Star = styled.select`
+  width: 200px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  appearance: none;
+  font-size: 25px;
+  letter-spacing: 5px;
+  text-align: center;
+`;
+const PostBtn = styled.div`
   width: 150px;
   height: 40px;
   background: #64e7b1;
@@ -243,9 +354,8 @@ const Btn = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 15px;
-  font-weight: bold;
   color: #161616;
-  margin-top: 70px;
+  margin-top: 30px;
   cursor: pointer;
   :hover {
     background: #161616;
@@ -253,28 +363,4 @@ const Btn = styled.div`
     transition: 0.5s ease;
   }
 `;
-
-const CardBox = styled.div`
-  margin: 0 auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  min-width: 800px;
-  max-width: 1600px;
-`;
-const Card = styled.div`
-  max-width: 350px;
-  /* height: 500px; */
-  background-color: #64e7b1;
-  margin: 20px 25px;
-  border-radius: 10px;
-`;
-const Img = styled.img`
-  width: 70px;
-  height: 250px;
-  margin: 10px;
-  background-color: white;
-  border-radius: 10px;
-`;
-
 export default Detail;
