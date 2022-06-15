@@ -1,4 +1,3 @@
-
 import "./App.css";
 import { Reset } from "styled-reset";
 import React from "react";
@@ -9,7 +8,6 @@ import Mypage from "./Pages/Mypage";
 import Detail from "./Pages/Detail";
 import Main from "./Pages/Main";
 import Post from "./Pages/Post";
-
 
 function App() {
   return (
@@ -23,10 +21,6 @@ function App() {
           <Route path="/detail" element={<Detail />} />
           <Route path="/post" element={<Post />} />
         </Routes>
-
-
-
-      
     </div>
   );
 }
