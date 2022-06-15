@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
-const navigate = useNavigate();
+import axios from "axios";
+
 function Header() {
   const token = localStorage.getItem("token");
+  const navigate = useNavigate();
   function logout() {
     axios({
       method: "post",
