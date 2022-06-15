@@ -26,13 +26,11 @@ const cardSlice = createSlice({
         {
         title: "멘탈을 바꿔야 인생이 바뀐다", 
         star:'⭐⭐⭐⭐', 
-        comment: "정신 차려 제발",
         img : "http://image.kyobobook.co.kr/images/book/large/761/l9791191043761.jpg" 
     },
     {
         title: "돈의 속성(200쇄 리커버에디션)", 
         star:'⭐⭐⭐', 
-        comment: "돈 돈 돈",
         img : "http://image.kyobobook.co.kr/images/book/large/796/l9791188331796.jpg" 
     },
     {
@@ -48,7 +46,7 @@ const cardSlice = createSlice({
         img : "http://image.kyobobook.co.kr/images/book/large/497/l9791165213497.jpg" 
     },
     {
-        title: "아몬드(100만 부 기념 특별판)", 
+        title: ")아몬드(100만 부 기념 특별판", 
         star:'⭐⭐⭐', 
         comment: "아몬드 아몬드 아몬드",
         img : "http://image.kyobobook.co.kr/images/book/large/753/l9788936438753.jpg" 

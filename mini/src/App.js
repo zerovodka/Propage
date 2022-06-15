@@ -1,4 +1,3 @@
-
 import "./App.css";
 import { Reset } from "styled-reset";
 import React from "react";
@@ -10,23 +9,18 @@ import Detail from "./Pages/Detail";
 import Main from "./Pages/Main";
 import Post from "./Pages/Post";
 
-
 function App() {
   return (
     <div className="App">
       <Reset />
         <Routes>
-          <Route path="/main" element={<Main/>}/>
+          <Route path="/" element={<Main/>}/>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/mypage" element={<Mypage />}></Route>
           <Route path="/detail" element={<Detail />} />
           <Route path="/post" element={<Post />} />
         </Routes>
-
-
-
-      
     </div>
   );
 }

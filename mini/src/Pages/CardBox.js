@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import {useSelector, useDispatch} from "react-redux";
-import {createSlice} from "@reduxjs/toolkit";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 
-
-
-//백엔드 분들이랑 해보기
 const CardList = (props) => {
 
     const [post,setPost] = useState([]);
-
 
 
     useEffect(()=>{
@@ -19,7 +14,6 @@ const CardList = (props) => {
         axios({
         method: "get",
         url:"http://1.224.63.113:8080/api/posts"
-    
     })
     .then(response => {
         console.log(response)
@@ -31,47 +25,31 @@ const CardList = (props) => {
     });
         
     },[])
-    
-    
 
-    const card = useSelector(state => state.card);
+    const navigate = useNavigate();
 
-    console.log(card[0].title);
-
-    const dispatch = useDispatch();
-    
-    const cardAxios = () => {
-    
-
-    
-    
       
-}
-
-//img 이미지
-//title 책 제목
-//star 별
-
+    
     return(
         <>
-        
         <CardBox>
+            
             {post.map((list,index) => {
                 return (
-                <Card key={post.id}>
+                
+                <Card key={post.id} onClick={()=>{navigate(`/detail/${index}`)}}>
                     <Img src={post[index].image} />
                     <Title>
                         
                         {post[index].title} 
                     </Title>
                     <Star>
-                        {post[index].star}
+                        {'⭐'.repeat(post[index].star)}
                     </Star>
                 </Card>
                 )  
             })}    
-        </CardBox>
-        
+        </CardBox>  
         </>
     )
 }
@@ -90,7 +68,7 @@ const CardBox = styled.div`
 const Card = styled.div`
     max-width: 350px;
     /* height: 500px; */
-    background-color: #64e7b1;
+    /* background-color: #64e7b1; */
     margin: 20px 25px;
     border-radius: 10px;
 
