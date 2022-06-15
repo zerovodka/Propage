@@ -7,7 +7,7 @@ import axios from "axios";
 function Header() {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-  const navigate = useNavigate();
+
   function logout() {
     axios({
       method: "post",
