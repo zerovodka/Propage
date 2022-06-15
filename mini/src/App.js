@@ -2,6 +2,7 @@ import "./App.css";
 import { Reset } from "styled-reset";
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Main from "./Pages/Main";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Mypage from "./Pages/Mypage";
@@ -13,9 +14,10 @@ function App() {
     <div className="App">
       <Reset />
       <Routes>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/mypage" element={<Mypage />}></Route>
+        <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/mypage" element={<Mypage />} />
         <Route path="/detail" element={<Detail />} />
         <Route path="/post" element={<Post />} />
       </Routes>
