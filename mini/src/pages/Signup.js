@@ -51,9 +51,11 @@ function Signup() {
     })
       .then((res) => {
         console.log(res);
-        if (res.data === "login") {
+        if (res.data == true) {
           alert("회원 가입이 완료되었습니다!");
           navigate("/login");
+        } else {
+          alert(res.data.errorMessage);
         }
       })
       .catch((err) => {

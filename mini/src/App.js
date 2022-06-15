@@ -1,7 +1,7 @@
 import "./App.css";
 import { Reset } from "styled-reset";
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Mypage from "./Pages/Mypage";
@@ -12,15 +12,12 @@ function App() {
   return (
     <div className="App">
       <Reset />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/mypage" element={<Mypage />}></Route>
-          <Route path="/detail" element={<Detail />} />
-          <Route path="/post" element={<Post />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/detail" element={<Detail />} />
+        <Route path="/post" element={<Post />} />
+      </Routes>
     </div>
   );
 }
