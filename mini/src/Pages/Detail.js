@@ -42,32 +42,21 @@ function Detail() {
       })
       .catch((err) => {
         console.log(err);
+        alert("로그인 부탁드려요!");
+        navigate("/login");
       });
   }, []);
-  // console.log(title);
-  // console.log(author);
-  // console.log(publisher);
-  // console.log(description);
-  // console.log(image);
-  // console.log(star);
-  // console.log(comment);
-  // console.log(params);
   console.log(username);
   function postDelete() {
     axios({
       method: "delete",
       url: `http://1.224.63.113:8080/api/post/${params.id}`,
-      // data: {
-      //   postId: params.id,
-      // },
       headers: {
-        // "Content-Type": "application/json",
         Authorization: localStorage.getItem("token"),
       },
     })
       .then((res) => {
         console.log(res);
-
         alert("삭제되었습니다!");
         navigate("/");
       })
