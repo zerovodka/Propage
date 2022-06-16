@@ -6,8 +6,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
-  // const url = "http://1.224.63.113:8080";
-  const url = "http://192.168.0.1:8080";
   const navigate = useNavigate();
   const username = React.useRef();
   const nickname = React.useRef();
@@ -43,7 +41,7 @@ function Signup() {
   function signupPost() {
     axios({
       method: "post",
-      url: `${url}/user/signup`,
+      url: `http://1.224.63.113:8080/user/idCheck/user/signup`,
       data: {
         username: username.current.value,
         nickname: nickname.current.value,
@@ -68,7 +66,7 @@ function Signup() {
   function idCheck() {
     axios({
       method: "get",
-      url: `${url}/user/idCheck/${username.current.value}`,
+      url: `http://1.224.63.113:8080/user/idCheck/${username.current.value}`,
     })
       .then((res) => {
         console.log(res);
@@ -86,7 +84,7 @@ function Signup() {
   function nickCheck() {
     axios({
       method: "get",
-      url: `${url}/user/nicknameCheck/${nickname.current.value}`,
+      url: `http://1.224.63.113:8080/user/nicknameCheck/${nickname.current.value}`,
     })
       .then((res) => {
         console.log(res);

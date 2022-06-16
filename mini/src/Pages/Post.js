@@ -7,8 +7,6 @@ import { useHistory } from "react-router";
 import Header from "../components/Header";
 
 function Detail() {
-  // const url = "http://1.224.63.113:8080";
-  const url = "http://192.168.0.1:8080";
   const navigate = useNavigate();
   const [selected, setSelected] = React.useState(1);
   const [isbn, setIsbn] = React.useState();
@@ -41,7 +39,7 @@ function Detail() {
   function postGet() {
     axios({
       method: "get",
-      url: `${url}/api/book`,
+      url: `http://1.224.63.113:8080/api/book`,
       //query값 넘기려면 data 아니고 params로 넘겨야한다.
       params: {
         query: searchBar.current.value,
@@ -72,7 +70,7 @@ function Detail() {
   function bookInfo(index) {
     axios({
       method: "post",
-      url: `${url}/api/bookinfo`,
+      url: `http://1.224.63.113:8080/api/bookinfo`,
       data: {
         isbn: isbn[index],
       },
@@ -108,7 +106,7 @@ function Detail() {
   function postPost() {
     axios({
       method: "post",
-      url: `${url}/api/post`,
+      url: `http://1.224.63.113:8080/api/post`,
       data: {
         title: title,
         image: image,
