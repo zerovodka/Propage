@@ -74,14 +74,14 @@ const CardBox = styled.div`
   max-width: 1600px;
 `;
 const Card = styled.div`
-  max-width: 350px;
+  max-width: 300px;
   /* height: 500px; */
   /* background-color: #64E7B1; */
   margin: 20px 25px;
   border-radius: 10px;
 `;
 const Img = styled.img`
-  width: 300px;
+  width: 200px;
   // height: 250px;
   margin: 10px;
   background-color: white;

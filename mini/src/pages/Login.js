@@ -24,6 +24,7 @@ function Login() {
         if (res.data.result === true) {
           if (res.headers.authorization) {
             localStorage.setItem("token", res.headers.authorization);
+            localStorage.setItem("username", username.current.value);
           }
           alert("안녕하세요!");
           navigate("/");
