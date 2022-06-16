@@ -41,7 +41,7 @@ function Signup() {
   function signupPost() {
     axios({
       method: "post",
-      url: `http://1.224.63.113:8080/user/idCheck/user/signup`,
+      url: `http://1.224.63.113:8080/user/signup`,
       data: {
         username: username.current.value,
         nickname: nickname.current.value,

@@ -18,6 +18,8 @@ function Detail() {
   const [star, setStar] = React.useState();
   const [comment, setComment] = React.useState();
 
+  const [username, setUsername] = React.useState();
+
   useEffect(() => {
     axios({
       method: "get",
@@ -36,18 +38,45 @@ function Detail() {
         setImage(res.data.image);
         setStar(res.data.star);
         setComment(res.data.comment);
+        setUsername(res.data.user.username);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
-  console.log(title);
-  console.log(author);
-  console.log(publisher);
-  console.log(description);
-  console.log(image);
-  console.log(star);
-  console.log(comment);
+  // console.log(title);
+  // console.log(author);
+  // console.log(publisher);
+  // console.log(description);
+  // console.log(image);
+  // console.log(star);
+  // console.log(comment);
+  // console.log(params);
+  console.log(username);
+  function postDelete() {
+    axios({
+      method: "delete",
+      url: `http://1.224.63.113:8080/api/post/${params.id}`,
+      // data: {
+      //   postId: params.id,
+      // },
+      headers: {
+        // "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => {
+        console.log(res);
+
+        alert("삭제되었습니다!");
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  console.log(localStorage.getItem("username"));
 
   return (
     <>
@@ -112,25 +141,50 @@ function Detail() {
               ></img>
             </div>
             <DetailContents>
-              {/* <Btn onClick={postDelete}>삭제</Btn> */}
-              <Title>{title}</Title>
-              <Text>{publisher}</Text>
-              <Text>{author}</Text>
+              {username === localStorage.getItem("username") ? (
+                <>
+                  <Btn onClick={postDelete}>삭제</Btn>
+                  <Title>{title}</Title>
+                  <Text>{publisher}</Text>
+                  <Text>{author}</Text>
 
-              <Desc>{description}</Desc>
+                  <Desc>{description}</Desc>
 
-              <div
-                className="detail_comments"
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  textAlign: "center",
-                }}
-              >
-                <Star>{"⭐".repeat(star)}</Star>
+                  <div
+                    className="detail_comments"
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Star>{"⭐".repeat(star)}</Star>
 
-                <Text>{comment}</Text>
-              </div>
+                    <Text>{comment}</Text>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <Title>{title}</Title>
+                  <Text>{publisher}</Text>
+                  <Text>{author}</Text>
+
+                  <Desc>{description}</Desc>
+
+                  <div
+                    className="detail_comments"
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Star>{"⭐".repeat(star)}</Star>
+
+                    <Text>{comment}</Text>
+                  </div>
+                </>
+              )}
             </DetailContents>
           </DetailWrap>
         </div>
