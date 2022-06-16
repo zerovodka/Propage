@@ -254,7 +254,7 @@ const Btn = styled.div`
   align-items: center;
   border-radius: 4px;
   width: 80px;
-  font-size: 12px;
+  font-size: 15px;
   background: #eee;
   margin-left: 5px;
   padding: 15px;
@@ -336,12 +336,12 @@ const StarMsg = styled.div`
   margin-top: 20px;
 `;
 const Star = styled.select`
-  width: 200px;
+  width: 250px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
   appearance: none;
-  font-size: 25px;
+  font-size: 20px;
   letter-spacing: 5px;
   text-align: center;
 `;
