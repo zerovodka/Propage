@@ -1,5 +1,5 @@
 # Propage
-https://granite-quince-faa.notion.site/SA-6-6c263d42d0774747b9342c36e9812cdb
+
 # 👋프로젝트 소개
 여러분들이 공부하신 프로그래밍 책들을 검색해서 추천해주세요 !!
 
