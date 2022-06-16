@@ -74,31 +74,31 @@ const CardBox = styled.div`
   max-width: 1600px;
 `;
 const Card = styled.div`
-  max-width: 300px;
-  /* height: 500px; */
-  /* background-color: #64E7B1; */
-  margin: 20px 25px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
   border-radius: 10px;
+  :hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  }
 `;
 const Img = styled.img`
   width: 200px;
-  // height: 250px;
   margin: 10px;
-  background-color: white;
   border-radius: 10px;
   object-fit: contain;
 `;
 const Title = styled.div`
-  width: 330px;
-  /* height: 50px; */
-  background-color: white;
-  margin: 10px;
+  width: 100%;
+  padding: 10px;
   border-radius: 10px;
 `;
 const Star = styled.div`
-  width: 330px;
-  /* height: 50px; */
-  background-color: white;
+  width: 100%;
   margin: 10px;
   border-radius: 10px;
 `;
