@@ -5,13 +5,16 @@ import styled from "styled-components";
 import axios from "axios";
 
 function Header() {
+  // const url = "http://1.224.63.113:8080";
+  const url = "http://192.168.0.1:8080";
+
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
   function logout() {
     axios({
       method: "post",
-      url: "http://1.224.63.113:8080/user/logout",
+      url: `${url}/user/logout`,
       data: {
         token: token,
       },
