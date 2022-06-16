@@ -1,17 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 function Detail() {
   const token = localStorage.getItem("token");
-  //로컬 스토리지 토큰 값 === 게시글 작성자 토큰 삭제 버튼 활성화
-  // function postDelete() {
-  //   axios({
-  //     method: "delete",
-  //     url: `http://1.224.63.113:8080/api/post/${postId}`,
-  //   }),
+  const navigate = useNavigate();
+  let params = useParams();
+  // console.log(params);
+  const [title, setTitle] = React.useState();
+  const [author, setAuthor] = React.useState();
+  const [publisher, setPublisher] = React.useState();
+  const [description, setDescription] = React.useState();
+  const [image, setImage] = React.useState();
+  const [star, setStar] = React.useState();
+  const [comment, setComment] = React.useState();
 
-  // }
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: `http://1.224.63.113:8080/api/post/${params.id}`,
+      headers: {
+        // "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((res) => {
+        console.log(res);
+        setTitle(res.data.title);
+        setAuthor(res.data.author);
+        setPublisher(res.data.publisher);
+        setDescription(res.data.description);
+        setImage(res.data.image);
+        setStar(res.data.star);
+        setComment(res.data.comment);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  console.log(title);
+  console.log(author);
+  console.log(publisher);
+  console.log(description);
+  console.log(image);
+  console.log(star);
+  console.log(comment);
+
   return (
     <>
       {!token ? (
@@ -28,19 +65,17 @@ function Detail() {
             >
               {/* 웹서버 주소 지정 */}
               <img
-                src="http://image.yes24.com/goods/102347474/XL"
+                src={image}
                 alt=""
                 style={{ maxWidth: "80%", height: "60%" }}
               ></img>
             </div>
             <DetailContents>
-              <Title>TITLE</Title>
-              <Text>출판사</Text>
-              <Text>저자</Text>
+              <Title>{title}</Title>
+              <Text>{publisher}</Text>
+              <Text>{author}</Text>
 
-              <Desc>
-                가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하
-              </Desc>
+              <Desc>{description}</Desc>
 
               <div
                 className="detail_comments"
@@ -50,8 +85,8 @@ function Detail() {
                   textAlign: "center",
                 }}
               >
-                <Star>⭐⭐⭐⭐⭐</Star>
-                <Text>가나다라마바사아자차카타파하</Text>
+                <Star>{"⭐".repeat(star)}</Star>
+                <Text>{comment}</Text>
               </div>
             </DetailContents>
           </DetailWrap>
@@ -66,24 +101,23 @@ function Detail() {
                 display: "flex",
                 justifyContent: "center",
                 margin: "auto",
+                objectFit: "contain",
               }}
             >
               {/* 웹서버 주소 지정 */}
               <img
-                src="http://image.yes24.com/goods/102347474/XL"
+                src={image}
                 alt=""
-                style={{ maxWidth: "80%", height: "60%" }}
+                style={{ width: "250px", height: "60%", objectFit: "contain" }}
               ></img>
             </div>
             <DetailContents>
               {/* <Btn onClick={postDelete}>삭제</Btn> */}
-              <Title>TITLE</Title>
-              <Text>출판사</Text>
-              <Text>저자</Text>
+              <Title>{title}</Title>
+              <Text>{publisher}</Text>
+              <Text>{author}</Text>
 
-              <Desc>
-                가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하
-              </Desc>
+              <Desc>{description}</Desc>
 
               <div
                 className="detail_comments"
@@ -93,9 +127,9 @@ function Detail() {
                   textAlign: "center",
                 }}
               >
-                <Star>⭐⭐⭐⭐⭐</Star>
+                <Star>{"⭐".repeat(star)}</Star>
 
-                <Text>가나다라마바사아자차카타파하</Text>
+                <Text>{comment}</Text>
               </div>
             </DetailContents>
           </DetailWrap>

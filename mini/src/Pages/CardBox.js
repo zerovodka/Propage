@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 
 const CardList = (props) => {
   const [post, setPost] = useState([]);
+  const navigate = useNavigate();
+  const [data, setData] = useState([]);
+  const [id, setId] = useState();
+
   useEffect(() => {
     axios({
       method: "get",
@@ -12,14 +16,33 @@ const CardList = (props) => {
     })
       .then((response) => {
         console.log(response);
-        console.log(response.data[0].image);
+        // console.log(response.data[0].image);
         setPost([...response.data]);
+        setData(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
-  const navigate = useNavigate();
+
+  function postGet(index) {
+    axios({
+      method: "get",
+      url: `http://1.224.63.113:8080/api/post/${index + 14}`,
+
+      headers: {
+        // "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <>
       <CardBox>
@@ -28,12 +51,13 @@ const CardList = (props) => {
             <Card
               key={post.id}
               onClick={() => {
-                navigate(`/detail/${index}`);
+                postGet(index);
+                navigate(`/detail/${data[index].postId}`);
               }}
             >
               <Img src={post[index].image} />
               <Title>{post[index].title}</Title>
-              <Star>{":별:".repeat(post[index].star)}</Star>
+              <Star>{"⭐".repeat(post[index].star)}</Star>
             </Card>
           );
         })}
@@ -57,11 +81,12 @@ const Card = styled.div`
   border-radius: 10px;
 `;
 const Img = styled.img`
-  width: 330px;
-  height: 250px;
+  width: 300px;
+  // height: 250px;
   margin: 10px;
   background-color: white;
   border-radius: 10px;
+  object-fit: contain;
 `;
 const Title = styled.div`
   width: 330px;
