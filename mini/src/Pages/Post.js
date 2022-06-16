@@ -124,6 +124,8 @@ function Detail() {
       .then((res) => {
         console.log(res);
         setIsbn(isbn.id);
+        alert("작성 완료!");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -137,13 +139,18 @@ function Detail() {
       <PostWrap>
         <div
           className="detail_thumbnail"
-          style={{ display: "flex", justifyContent: "center", margin: "auto" }}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            margin: "auto",
+            objectFit: "contain",
+          }}
         >
           {/* 웹서버 주소 지정 */}
           <img
             src={image}
             alt=""
-            style={{ maxWidth: "80%", height: "60%" }}
+            style={{ width: "250px", height: "60%", objectFit: "contain" }}
           ></img>
         </div>
         <PostContents>
