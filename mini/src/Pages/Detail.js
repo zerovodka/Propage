@@ -34,13 +34,13 @@ function Detail() {
               ></img>
             </div>
             <DetailContents>
-              <h1>TITLE</h1>
-              <h2>출판사</h2>
-              <h2>저자</h2>
+              <Title>TITLE</Title>
+              <Text>출판사</Text>
+              <Text>저자</Text>
 
-              <span>
+              <Desc>
                 가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하
-              </span>
+              </Desc>
 
               <div
                 className="detail_comments"
@@ -50,12 +50,8 @@ function Detail() {
                   textAlign: "center",
                 }}
               >
-                <h2>
-                  <span>⭐⭐⭐⭐⭐</span>
-                </h2>
-                <h3>
-                  <span>가나다라마바사아자차카타파하</span>
-                </h3>
+                <Star>⭐⭐⭐⭐⭐</Star>
+                <Text>가나다라마바사아자차카타파하</Text>
               </div>
             </DetailContents>
           </DetailWrap>
@@ -81,13 +77,13 @@ function Detail() {
             </div>
             <DetailContents>
               {/* <Btn onClick={postDelete}>삭제</Btn> */}
-              <h1>TITLE</h1>
-              <h2>출판사</h2>
-              <h2>저자</h2>
+              <Title>TITLE</Title>
+              <Text>출판사</Text>
+              <Text>저자</Text>
 
-              <span>
+              <Desc>
                 가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하가나다라마바사아자차카타파하
-              </span>
+              </Desc>
 
               <div
                 className="detail_comments"
@@ -97,12 +93,9 @@ function Detail() {
                   textAlign: "center",
                 }}
               >
-                <h2>
-                  <span>⭐⭐⭐⭐⭐</span>
-                </h2>
-                <h3>
-                  <span>가나다라마바사아자차카타파하</span>
-                </h3>
+                <Star>⭐⭐⭐⭐⭐</Star>
+
+                <Text>가나다라마바사아자차카타파하</Text>
               </div>
             </DetailContents>
           </DetailWrap>
@@ -128,7 +121,39 @@ const DetailContents = styled.div`
     max-width: 90%;
   }
 `;
-
+const Title = styled.div`
+  width: 500px;
+  font-size: 25px;
+  font-weight: 600;
+  padding-top: 50px;
+  line-height: 140%;
+`;
+const Text = styled.div`
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #555;
+  font-size: 16px;
+  padding-top: 20px;
+`;
+const Star = styled.div`
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #555;
+  font-size: 25px;
+  padding-top: 20px;
+`;
+const Desc = styled.div`
+  width: 500px;
+  font-size: 16px;
+  color: #555;
+  padding-top: 20px;
+  line-height: 140%;
+  text-align: justify;
+`;
 const Btn = styled.div`
   width: 150px;
   height: 40px;
