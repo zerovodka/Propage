@@ -10,12 +10,11 @@ function Login() {
   const username = React.useRef();
   const password = React.useRef();
   const navigate = useNavigate();
-  // const url = "http://1.224.63.113:8080";
-  const url = "http://192.168.0.1:8080";
+
   function LoginPost() {
     axios({
       method: "post",
-      url: `${url}/user/login`,
+      url: `http://1.224.63.113:8080/user/login`,
       data: {
         username: username.current.value,
         password: password.current.value,
